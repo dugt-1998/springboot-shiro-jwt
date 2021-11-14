@@ -1,0 +1,7 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql:///dugt?charset=utf8mb4&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: dugt@1998
+    driver-class-name: com.mysql.cj.jdbc.Driver

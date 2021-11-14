@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.UserMapper">
+
+    <select id="getPassword" parameterType="String" resultType="String">
+        SELECT password
+        FROM user
+        WHERE username = #{username}
+    </select>
+
+    <select id="getRole" parameterType="String" resultType="String">
+        SELECT role
+        FROM user
+        WHERE username = #{username}
+    </select>
+
+
+    <select id="getRolePermission" parameterType="String" resultType="String">
+        SELECT role.permission
+        FROM user,
+             role
+        WHERE username = #{username}
+          AND role.role = user.role
+    </select>
+
+
+    <select id="auth" resultType="java.lang.Integer">
+        select count(1)
+        from user
+        where username = #{username}
+          and ban = 0
+    </select>
+
+    <select id="getPermission" resultType="java.lang.String">
+        select permission
+        from user u
+                 inner join role r on
+                u.role = r.role
+                and u.username = #{username}
+    </select>
+</mapper>
