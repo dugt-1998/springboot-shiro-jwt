@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @RequestMapping(path = "/unauthorized/{message}")
-    public JsonResult unauthorized(@PathVariable String message) {
+    public JsonResult<String> unauthorized(@PathVariable String message) {
         return JsonResult.Fail(message);
     }
 }
